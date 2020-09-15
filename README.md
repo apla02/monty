@@ -20,7 +20,7 @@ Monty 0.98 is a scripting language that is first compiled into Monty byte codes 
     <h2 align="center">Examples</h2>
       <p align="center">
         <a>
-            <img alt="example_shell" src="https://github.com/apla02/simple_shell/blob/master/example_shell" style="float: center; margin-right: 10px" height="55" width="753">
+            <img alt="example_shell" src="https://pbs.twimg.com/media/CFYYWy6UEAE9Ow-.png" style="float: center; margin-right: 10px" height="55" width="753">
         </a>
       </p>
 </p>
@@ -29,7 +29,7 @@ Monty 0.98 is a scripting language that is first compiled into Monty byte codes 
 ### :file_folder: Files / Directories 
 ##|File|Description
 ---|---|---
-1|[README.md](https://github.com/apla02/simple_shell/blob/master/README.md)|this file contains the specifiacion of the project
+1|[README.md](https://github.com/apla02/monty/blob/master/README.md)|this file contains the specifiacion of the project
 2|[AUTHORS](https://github.com/apla02/simple_shell/blob/master/AUTHORS)|this file contains the authors of the project
 3|[man_1_simple_shell](https://github.com/apla02/simple_shell/blob/master/man_1_simple_shell)|this file contains the man page of the project
 4|[hsh.c](https://github.com/apla02/simple_shell/blob/master/hsh.c)|This file contains the printf function to our project.
