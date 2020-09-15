@@ -17,7 +17,7 @@ Monty 0.98 is a scripting language that is first compiled into Monty byte codes 
 
 ---|---|--- 
 <p align="center">
-    <h2 align="center">Examples</h2>
+    <h2 align="center"></h2>
       <p align="center">
         <a>
             <img alt="example_shell" src="https://pbs.twimg.com/media/CFYYWy6UEAE9Ow-.png" style="float: center; margin-right: 10px" height="275" width="500">
