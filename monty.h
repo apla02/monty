@@ -32,6 +32,15 @@ typedef struct instruction_s
 {
 		char *opcode;
 		void (*f)(stack_t **stack, unsigned int line_number);
+
 } instruction_t;
+/* extern variables*/
+char inst_oper[2];
+unsigned int lin_num;
+/*fn tokenaze and, open and read file*/
+void (*get_op(char *inst_oper))(stack_t **stack, unsigned int lin_num);
+/* functions to instructions*/
+void _push(stack_t **stack, lin_num);
+
 
 #endif
