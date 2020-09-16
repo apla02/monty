@@ -1,62 +1,79 @@
 #include "monty.h"
-int List_Ins_Next(List *list, stack_t *Element, int Data)
+/**
+ * List_Ins_Next - Insert a nee node in the estructure list
+ * @list: pointer to estructure
+ * @element: pointer to structure
+ * @Data: value on node
+ * Return: zero or one
+ */
+int List_Ins_Next(List *list, stack_t *element, int Data)
 {
-	stack_t *New_Element = NULL;
-	New_Element = (stack_t *)malloc(sizeof(stack_t));
-	
-	if (!New_Element)
+	stack_t *new_element = NULL;
+
+	new_element = (stack_t *)malloc(sizeof(stack_t));
+	if (!new_element)
 		return (1);
-	
-	New_Element->n = Data;
-	if (!Element)
+
+	new_element->n = Data;
+	if (!element)
 	{
-	if (!List_Size(list))  
-		list->Tail  = New_Element;
-	New_Element->next = list->Head;
+	if (!List_Size(list))
+		list->Tail  = new_element;
+	new_element->next = list->Head;
 	if (!list->Head)
-		New_Element->prev = list->Head;
+		new_element->prev = list->Head;
 	else
 	{
-		New_Element->prev = list->Head->prev;
-		list->Head->prev = New_Element;
+		new_element->prev = list->Head->prev;
+		list->Head->prev = new_element;
 	}
-	list->Head = New_Element;
-	}
-	else
-	{
-	New_Element->next = Element->next;
-	New_Element->prev = Element;
-	if (!Element->next)
-	{
-		list->Tail = New_Element;
-		Element->next = New_Element;
+	list->Head = new_element;
 	}
 	else
 	{
-		Element->next->prev = New_Element;
-		Element->next = New_Element;
+	new_element->next = element->next;
+	new_element->prev = element;
+	if (!element->next)
+	{
+		list->Tail = new_element;
+		element->next = new_element;
+	}
+	else
+	{
+		element->next->prev = new_element;
+		element->next = new_element;
 	}
 	}
 	list->Size++;
 	return (0);
 }
-
-void Pall(stack_t *Element)
+/**
+ * Pall- print the element of the top of stack
+ * @element: pointer to structure
+ * Return: void
+ */
+void Pall(stack_t *element)
 {
-	if (Element)
+	if (element)
 	{
-		printf("%d\n", Element->n);
-		Pall(Element->next);
+		printf("%d\n", element->n);
+		Pall(element->next);
 	}
 }
-
-int List_Rem(List *list, stack_t *Element)
+/**
+ * List_Rem- Remove the node parsed to the liste
+ * @list: pointer to structure
+ * @element: pointer to structure
+ * Return: the node removed
+ */
+int List_Rem(List *list, stack_t *element)
 {
-	stack_t *Old_Element = NULL;
+	stack_t *Old_element = NULL;
 	int Old_Number;
-	if (!Element)
+
+	if (!element)
 	{
-		Old_Element  = list->Head;
+		Old_element  = list->Head;
 
 		if (list->Head->next)
 			list->Head->next->prev = NULL;
@@ -67,33 +84,40 @@ int List_Rem(List *list, stack_t *Element)
 	}
 	else
 	{
-		if (!Element->next)
-			list->Tail = Element->prev;
+		if (!element->next)
+			list->Tail = element->prev;
 
-		Old_Element = Element;
-			
-		if (Element->prev)
+		Old_element = element;
+
+		if (element->prev)
 		{
-			Element->next->prev = Element->prev;
-			Element->prev->next = Element->next;
+			element->next->prev = element->prev;
+			element->prev->next = element->next;
 		}
 	if (List_Size(list) == 1)
 		list->Head = NULL;
 	}
-	Old_Number = Old_Element->n;
-	free(Old_Element);
+	Old_Number = Old_element->n;
+	free(Old_element);
 	list->Size--;
 	return (Old_Number);
 }
-
-
+/**
+ * Pop_Stack- Remove the node on the top of the stack
+ * @list: pointer to structure
+ * Return: the node removed
+ */
 int Pop_Stack(List *list)
 {
-    return (List_Rem(list, NULL));
+	return (List_Rem(list, NULL));
 }
 
-
+/**
+ * Pop_Stack- Remove the node on the top of the queue
+ * @list: pointer to structure
+ * Return: the node removed
+ */
 int Pop_Queue(List *list)
 {
-    return (List_Rem(list, NULL));
+	return (List_Rem(list, NULL));
 }
