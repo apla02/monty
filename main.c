@@ -2,7 +2,7 @@
 /**
 * main - function to passed file such an arguments in interpreter
 * @argc: number of arguments
-* @argv: arguments 
+* @argv: arguments
 * Return: Exit sucess if program is in the end
 */
 int main(int argc, char *argv[])
