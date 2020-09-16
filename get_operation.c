@@ -7,10 +7,13 @@ void (*get_op(char *inst_oper))(stack_t **stack, unsigned int lin_num)
 		{"pall", _pall},
 		{"pint", _pint},
 		{"pop", _pop},
+		{"swap", _swap},
 		{"sub",  _sub},
 		{"add", _add},
-		{"swap", _swap},
 		{"mul",  _mul},
+		{"div",  _div},
+		{"mod",  _mod},
+		{"pchar",  _pchar},
 		{NULL, NULL}
 	};
 

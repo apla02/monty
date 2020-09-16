@@ -58,3 +58,48 @@ void _mul(stack_t **stack, unsigned int lin_num)
 		exit(EXIT_FAILURE);
 	}
 }
+
+
+void _div(stack_t **stack, unsigned int lin_num)
+{
+	(void)stack;
+
+	if (list.Size)
+	{
+		int Number1, Number2;
+
+		Number1 = Pop_Stack(&list);
+		Number2 = Pop_Stack(&list);
+
+		if (Number1)
+			Push_Stack(&list, Number2 / Number1);
+		else
+			printf("No se puede dividir por cero");
+	}
+	else
+	{
+		printf("L%d: can't sub, stack too short\n", lin_num);
+		exit (EXIT_FAILURE);
+	}
+}
+
+
+void _mod(stack_t **stack, unsigned int lin_num)
+{
+	(void)stack;
+
+	if (list.Size)
+	{
+		int Number1, Number2;
+
+		Number1 = Pop_Stack(&list);
+		Number2 = Pop_Stack(&list);
+
+		Push_Stack(&list, Number2 % Number1);
+	}
+	else
+	{
+		printf("L%d: can't sub, stack too short\n", lin_num);
+		exit (EXIT_FAILURE);
+	}
+}
