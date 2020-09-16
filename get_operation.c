@@ -1,4 +1,9 @@
 #include "monty.h"
+/**
+ * get_op- function pointer
+ * @inst_oper: operacion to compare
+ * Return: none
+ */
 void (*get_op(char *inst_oper))(stack_t **stack, unsigned int lin_num)
 {
 	int i = 0;
@@ -14,6 +19,7 @@ void (*get_op(char *inst_oper))(stack_t **stack, unsigned int lin_num)
 		{"div",  _div},
 		{"mod",  _mod},
 		{"pchar",  _pchar},
+		{"pstr",  _pstr},
 		{NULL, NULL}
 	};
 
