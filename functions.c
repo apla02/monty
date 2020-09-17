@@ -12,28 +12,37 @@ void _push(stack_t **stack, unsigned int lin_num)
 	int index = 0;
 	(void)stack;
 
-	while (list.inst_oper[1] && (list.inst_oper)[1][index])
-	{
-		if (isdigit((list.inst_oper)[1][index])
-		|| (((list.inst_oper)[1][index] == '-') && ((list.inst_oper)[1][index++])))
-			index++;
-		else
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", lin_num);
-			free(list.Solve_line);
-			fclose(list.Fd);
-			Destroy(&list);
-			exit(EXIT_FAILURE);
-		}
-	}
 	if (list.inst_oper[1])
+	{
+		if (list.inst_oper[1][index] == '-')
+		{
+			if (isdigit(list.inst_oper[1][1]))
+				index++;
+			else
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", lin_num);
+				free(list.Solve_line), fclose(list.Fd);
+				Destroy(&list), exit(EXIT_FAILURE);
+			}
+		}
+
+		while ((list.inst_oper)[1][index])
+		{
+			if (isdigit((list.inst_oper)[1][index]))
+				index++;
+			else
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", lin_num);
+				free(list.Solve_line), fclose(list.Fd);
+				Destroy(&list), exit(EXIT_FAILURE);
+			}
+		}
 		Push_Stack(&list, atoi((list.inst_oper)[1]));
+	}
 	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", lin_num);
-		free(list.Solve_line);
-		fclose(list.Fd);
-		Destroy(&list);
+		free(list.Solve_line), fclose(list.Fd),	Destroy(&list);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -85,12 +94,11 @@ void _pop(stack_t **stack, unsigned int lin_num)
 		Pop_Stack(&list);
 	else
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack", lin_num);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", lin_num);
 		free(list.inst_oper[0]), fclose(list.Fd);
-		exit(EXIT_FAILURE);
+		Destroy(&list), exit(EXIT_FAILURE);
 	}
 }
-
 /**
  * _swap-swap the two elements of the top of the stack
  * @stack: double pointer to doubly linked list
@@ -101,7 +109,7 @@ void _swap(stack_t **stack, unsigned int lin_num)
 {
 	int number1 =  0, number2 = 0;
 	(void)stack;
-	if (list.Size)
+	if (list.Size > 1)
 	{
 		number1 = Pop_Stack(&list);
 		number2 = Pop_Stack(&list);
@@ -111,6 +119,9 @@ void _swap(stack_t **stack, unsigned int lin_num)
 	else
 	{
 		fprintf(stderr, "L%d: can't swap, stack too shortc\n", lin_num);
+		free(list.inst_oper[0]);
+		fclose(list.Fd);
+		Destroy(&list);
 		exit(EXIT_FAILURE);
 	}
 }
