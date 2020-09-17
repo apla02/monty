@@ -72,7 +72,7 @@ void _pstr(stack_t **stack, unsigned int lin_num)
 	else
 	{
 		printf("\n");
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 }
 
