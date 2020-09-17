@@ -22,7 +22,7 @@ void _pchar(stack_t **stack, unsigned int lin_num)
 
 	if (list.Size)
 	{
-		if (list.Head->n > 0 && list.Head->n <= 122)
+		if (list.Head->n > 0 && list.Head->n <= 127)
 			printf("%c\n", list.Head->n);
 		else
 		{
@@ -45,12 +45,18 @@ void pstr_stack(stack_t *stack)
 {
 	if (stack)
 	{
-		if (stack->n > 0 && stack->n <= 122)
+		if (stack->n > 0 && stack->n <= 127)
 		{
 			printf("%c", stack->n);
 			pstr_stack(stack->next);
 		}
+		else
+		{
+			exit(EXIT_FAILURE);
+		}
 	}
+	putchar('\n');
+	exit(EXIT_FAILURE);
 }
 /**
  * _pstr- prints the str of the stack
