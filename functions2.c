@@ -130,7 +130,7 @@ void _mod(stack_t **stack, unsigned int lin_num)
 
 	if (list.Size < 2)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", lin_num);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", lin_num);
 		free(list.inst_oper[0]), fclose(list.Fd);
 		Destroy(&list), exit(EXIT_FAILURE);
 	}
