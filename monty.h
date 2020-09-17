@@ -44,6 +44,7 @@ typedef struct instruction_s
  * @Size: Size of list
  * @Tail: function to tail of structure
  * @inst_oper:token of strtok
+ * @Fd: file descriptor
  */
 typedef struct List_
 {
@@ -51,6 +52,7 @@ typedef struct List_
 	struct stack_s *Head;
 	struct stack_s *Tail;
 	char *inst_oper[2];
+	FILE *Fd;
 } List;
 
 /*
@@ -73,7 +75,7 @@ void Pall(stack_t *Element);
 int List_Rem(List *list, stack_t *Element);
 int Pop_Stack(List *list);
 int Pop_Queue(List *list);
-
+void Destroy(List *list);
 /* extern variables*/
 
 List list;
@@ -85,16 +87,17 @@ void (*get_op(char *inst_oper))(stack_t **stack, unsigned int lin_num);
 /* functions to instructions*/
 
 void _push(stack_t **stack, unsigned int lin_num);
-void _pop(stack_t **stack, unsigned int lin_num);
 void _pall(stack_t **stack, unsigned int lin_num);
-void _pint(stack_t **stack, unsigned int lin_num);
-void _swap(stack_t **stack, unsigned int lin_num);
 void _sub(stack_t **stack, unsigned int lin_num);
-void _add(stack_t **stack, unsigned int lin_num);
 void _mul(stack_t **stack, unsigned int lin_num);
-void _mod(stack_t **stack, unsigned int lin_num);
 void _div(stack_t **stack, unsigned int lin_num);
+void _mod(stack_t **stack, unsigned int lin_num);
 void _pchar(stack_t **stack, unsigned int lin_num);
 void _pstr(stack_t **stack, unsigned int lin_num);
+void _rotl(stack_t **stack, unsigned int lin_num);
+void _pint(stack_t **stack, unsigned int lin_num);
+void _pop(stack_t **stack, unsigned int lin_num);
+void _swap(stack_t **stack, unsigned int lin_num);
+void _add(stack_t **stack, unsigned int lin_num);
 
 #endif
