@@ -92,16 +92,18 @@ void _mul(stack_t **stack, unsigned int lin_num)
  */
 void _div(stack_t **stack, unsigned int lin_num)
 {
+
 	int Number1, Number2;
 	(void)stack;
 
 	if (list.Size < 2)
 	{
-		fprintf(stderr, "L%d: division by zero", lin_num);
+		fprintf(stderr, "L%d: can't div, stack too short", lin_num);
 		free(list.inst_oper[0]), fclose(list.Fd);
 		Destroy(&list), exit(EXIT_FAILURE);
 	}
 	else
+	{
 		Number1 = Pop_Stack(&list);
 		Number2 = Pop_Stack(&list);
 
@@ -111,8 +113,8 @@ void _div(stack_t **stack, unsigned int lin_num)
 			free(list.inst_oper[0]), fclose(list.Fd);
 			Destroy(&list), exit(EXIT_FAILURE);
 		}
-		else
-			Push_Stack(&list, Number2 / Number1);
+		Push_Stack(&list, Number2 / Number1);
+	}
 }
 
 /**
