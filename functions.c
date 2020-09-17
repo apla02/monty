@@ -86,9 +86,11 @@ void _pop(stack_t **stack, unsigned int lin_num)
 	else
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack", lin_num);
+		free(list.inst_oper[0]), fclose(list.Fd);
 		exit(EXIT_FAILURE);
 	}
 }
+
 /**
  * _swap-swap the two elements of the top of the stack
  * @stack: double pointer to doubly linked list
