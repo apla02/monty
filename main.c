@@ -52,8 +52,7 @@ int main(int argc, char *argv[])
 
 				fprintf(stderr, s, (int)line_num, string);
 				free((list.inst_oper)[0]), fclose(list.Fd);
-
-				Destroy(&list);
+				Destroy(&list), exit(EXIT_FAILURE);
 			}
 		}
 		line_num++, free(line),	line = NULL, len  = 0;
