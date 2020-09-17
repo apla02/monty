@@ -17,7 +17,7 @@ void _push(stack_t **stack, unsigned int lin_num)
 
 	while (list.inst_oper[1] && (list.inst_oper)[1][index])
 	{
-		if ((isdigit((list.inst_oper)[1][index])))
+		if (isdigit((list.inst_oper)[1][index]))
 			index++;
 		else
 		{
