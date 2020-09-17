@@ -27,13 +27,15 @@ void _pchar(stack_t **stack, unsigned int lin_num)
 		else
 		{
 			fprintf(stderr, "L%d: can't pchar, value out of range\n", lin_num);
-			exit(EXIT_FAILURE);
+			free(list.Solve_line), fclose(list.Fd);
+			Destroy(&list), exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", lin_num);
-		exit(EXIT_FAILURE);
+		free(list.Solve_line), fclose(list.Fd);
+		Destroy(&list), exit(EXIT_FAILURE);
 	}
 }
 /**
@@ -45,18 +47,12 @@ void pstr_stack(stack_t *stack)
 {
 	if (stack)
 	{
-		if (stack->n > 0 && stack->n <= 127)
+		if (stack->n >= 0 && stack->n <= 127)
 		{
 			printf("%c", stack->n);
 			pstr_stack(stack->next);
 		}
-		else
-		{
-			exit(EXIT_FAILURE);
-		}
 	}
-	putchar('\n');
-	exit(EXIT_FAILURE);
 }
 /**
  * _pstr- prints the str of the stack
@@ -74,7 +70,10 @@ void _pstr(stack_t **stack, unsigned int lin_num)
 		printf("\n");
 	}
 	else
+	{
 		printf("\n");
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
