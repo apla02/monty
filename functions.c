@@ -22,7 +22,7 @@ void _push(stack_t **stack, unsigned int lin_num)
 		else
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", lin_num);
-			free(list.inst_oper[0]);
+			free(list.Solve_line);
 			fclose(list.Fd);
 			Destroy(&list);
 			exit(EXIT_FAILURE);

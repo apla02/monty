@@ -30,10 +30,7 @@ int main(int argc, char *argv[])
 	void (*Pointer_Function)(stack_t **, unsigned int);
 
 	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
 	{
@@ -44,6 +41,7 @@ int main(int argc, char *argv[])
 	line_num = 1;
 	while ((nread = getline(&line, &len, fd)) != -1)
 	{
+		list.Solve_line = line;
 		(list.inst_oper)[0] = strtok(line, "\t\n ");
 		(list.inst_oper)[1] = strtok(NULL, "\t\n ");
 		if (list.inst_oper[0])

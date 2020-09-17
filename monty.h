@@ -45,6 +45,7 @@ typedef struct instruction_s
  * @Tail: function to tail of structure
  * @inst_oper:token of strtok
  * @Fd: file descriptor
+ * @Solve_line: free the memory from the line
  */
 typedef struct List_
 {
@@ -53,6 +54,7 @@ typedef struct List_
 	struct stack_s *Tail;
 	char *inst_oper[2];
 	FILE *Fd;
+	char *Solve_line;
 } List;
 
 /*
