@@ -41,6 +41,8 @@ int main(int argc, char *argv[])
 		list.Solve_line = line;
 		(list.inst_oper)[0] = strtok(line, "\t\n ");
 		(list.inst_oper)[1] = strtok(NULL, "\t\n ");
+		if ((list.inst_oper[0] && list.inst_oper[0][0] == '#'))
+			continue;
 		if (list.inst_oper[0])
 		{
 			Pointer_Function = get_op((list.inst_oper)[0]);
