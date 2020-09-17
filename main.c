@@ -33,10 +33,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]), exit(EXIT_FAILURE);
 	list.Fd = fd;
 	line_num = 1;
 	while ((nread = getline(&line, &len, fd)) != -1)
@@ -54,6 +51,9 @@ int main(int argc, char *argv[])
 				char *string =  list.inst_oper[0];
 
 				fprintf(stderr, s, (int)line_num, string);
+				free((list.inst_oper)[0]), fclose(list.Fd);
+
+				Destroy(&list);
 			}
 		}
 		line_num++, free(line),	line = NULL, len  = 0;
