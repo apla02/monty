@@ -39,7 +39,7 @@ void _pchar(stack_t **stack, unsigned int lin_num)
 	}
 }
 /**
- * pstr_stack- prints the str of the stack
+ * pstr_stack- prints the str from  a list
  * @stack: double pointer to doubly linked list
  * Return: none
  */
@@ -47,7 +47,7 @@ void pstr_stack(stack_t *stack)
 {
 	if (stack)
 	{
-		if (stack->n >= 0 && stack->n <= 127)
+		if (stack->n > 0 && stack->n < 127)
 		{
 			printf("%c", stack->n);
 			pstr_stack(stack->next);
@@ -70,10 +70,7 @@ void _pstr(stack_t **stack, unsigned int lin_num)
 		printf("\n");
 	}
 	else
-	{
 		printf("\n");
-		exit(0);
-	}
 }
 
 /**
