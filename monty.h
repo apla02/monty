@@ -98,5 +98,6 @@ void _div(stack_t **stack, unsigned int lin_num);
 void _pchar(stack_t **stack, unsigned int lin_num);
 void _pstr(stack_t **stack, unsigned int lin_num);
 void _rotl(stack_t **stack, unsigned int lin_num);
+void _nop(stack_t **stack, unsigned int lin_num);
 
 #endif

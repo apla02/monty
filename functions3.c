@@ -1,5 +1,16 @@
 #include "monty.h"
 /**
+ * _nop- function does anything
+ * @stack: double pointer to doubly linked list
+ * @lin_num: number of line to be analize
+ * Return: none
+ */
+void _nop(stack_t **stack, unsigned int lin_num)
+{
+	(void)stack;
+	(void)lin_num;
+}
+/**
  * _pchar- prints the char at the top of the stack
  * @stack: double pointer to doubly linked list
  * @lin_num: number of line to be analize
