@@ -17,10 +17,12 @@ void _push(stack_t **stack, unsigned int lin_num)
 		else
 		{
 			printf("L%d: usage: push integer\n", lin_num);
+			free(list.inst_oper);
 			exit(EXIT_FAILURE);
 		}
 	}
 	Push_Stack(&list, atoi((list.inst_oper)[1]));
+
 }
 /**
  * _pall- prints the first element at the top of the stack
@@ -89,7 +91,7 @@ void _swap(stack_t **stack, unsigned int lin_num)
 	}
 	else
 	{
-	printf("L%d: can't swap, stack too shortc\n", lin_num);
+	printf("L%d: can't swap, stack too short\n", lin_num);
 		exit(EXIT_FAILURE);
 	}
 }

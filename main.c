@@ -1,4 +1,15 @@
 #include "monty.h"
+
+/**
+ * Destroy - Function destroy
+ */
+
+void Destroy(List *list)
+{
+	while (list->Size)
+		List_Rem(list, NULL);
+}
+
 /**
 * main - function to passed file such an arguments in interpreter
 * @argc: number of arguments
@@ -12,6 +23,7 @@ int main(int argc, char *argv[])
 	size_t len = 0;
 	ssize_t nread;
 	size_t line_num;
+	void (*operation)(stack_t **, unsigned int);
 
 	if (argc != 2)
 		dprintf(STDERR_FILENO, "USAGE: monty file\n"), exit(EXIT_FAILURE);
@@ -25,18 +37,24 @@ int main(int argc, char *argv[])
 
 	line_num = 1;
 	while ((nread = getline(&line, &len, fd)) != -1)
-	{
-		(list.inst_oper)[0] = strtok(line, "\t\n ");
-		(list.inst_oper)[1] = strtok(NULL, "\t\n ");
-		if (list.inst_oper[0])
-			get_op((list.inst_oper)[0])(NULL, line_num);
-		line_num++;
+		{
+			(list.inst_oper)[0] = strtok(line, "\t\n ");
+			(list.inst_oper)[1] = strtok(NULL, "\t\n ");
+			if (list.inst_oper[0])
+			{
+				operation = get_op((list.inst_oper)[0]);
+				if (operation)
+					operation(NULL, line_num);
+				else
+					printf("L%d: unknown instruction %s\n", (int)line_num, list.inst_oper[0]);
+			}
+			line_num++;
+			free(line);
+			line = NULL;
+			len  = 0;
+		}
+		Destroy(&list);
+		fclose(fd);
 		free(line);
-		line = NULL;
-		len  = 0;
-	}
-
-	fclose(fd);
-	free(line);
-	return (0);
+		return (0);
 }
